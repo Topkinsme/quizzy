@@ -6,3 +6,5 @@ def home(request):
 
 def entercode(request):
     return render(request,"entercode.html")
+def questions(request):
+    return render(request,"questions.html")

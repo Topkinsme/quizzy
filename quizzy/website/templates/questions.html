@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}
+Questions
+{% endblock %}
+{% block body %}
+<div class="bg-[#72BF78] text-gray-800 min-h-screen flex flex-col justify-between">
+
+    <div class="container mx-auto p-6 flex-grow" id="questions-container">
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#A0D683]">Questions</h1>
+        
+        <div class="question-form mb-6" id="question-1">
+            <form class="bg-[#A0D683] p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Question 1</h2>
+                <div class="mb-4">
+                    <label for="question1" class="block text-lg font-medium">Question:</label>
+                    <input type="text" id="question1" name="question1" class="mt-2 p-2 w-full border border-gray-300 rounded" required>
+                </div>
+                
+                <div class="mb-4">
+                    <span class="block text-lg font-medium mb-2">Answers:</span>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer1" required class="mr-2">
+                        <input type="text" name="answer1_1" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 1" required>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer1" class="mr-2">
+                        <input type="text" name="answer1_2" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 2">
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer1" class="mr-2">
+                        <input type="text" name="answer1_3" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 3">
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer1" class="mr-2">
+                        <input type="text" name="answer1_4" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 4">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <button type="button" class="bg-[#D3EE98] text-gray-800 p-2 rounded hover:bg-[#FEFF9F] transition mx-auto mb-4" onclick="createNewQuestion()">Add Question</button>
+    <button type="submit" class="bg-[#D3EE98] text-gray-800 p-2 rounded hover:bg-[#FEFF9F] transition mx-auto mb-6">Submit All Questions</button>
+</div>
+
+<script>
+    let questionCount = 1;
+
+    function createNewQuestion() {
+        questionCount++;
+        const container = document.getElementById('questions-container');
+        const newQuestionForm = document.createElement('div');
+        newQuestionForm.classList.add('question-form', 'mb-6');
+
+        newQuestionForm.innerHTML = `
+            <form class="bg-[#A0D683] p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Question ${questionCount}</h2>
+                <div class="mb-4">
+                    <label for="question${questionCount}" class="block text-lg font-medium">Question:</label>
+                    <input type="text" id="question${questionCount}" name="question${questionCount}" class="mt-2 p-2 w-full border border-gray-300 rounded" required>
+                </div>
+                
+                <div class="mb-4">
+                    <span class="block text-lg font-medium mb-2">Answers:</span>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer${questionCount}" required class="mr-2">
+                        <input type="text" name="answer${questionCount}_1" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 1" required>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer${questionCount}" class="mr-2">
+                        <input type="text" name="answer${questionCount}_2" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 2">
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer${questionCount}" class="mr-2">
+                        <input type="text" name="answer${questionCount}_3" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 3">
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="answer${questionCount}" class="mr-2">
+                        <input type="text" name="answer${questionCount}_4" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 4">
+                    </div>
+                </div>
+
+                <button type="button" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 transition ml-4" onclick="deleteQuestion(this)">Delete</button>
+            </form>
+        `;
+        container.appendChild(newQuestionForm);
+    }
+
+    function deleteQuestion(button) {
+        const questionForm = button.closest('.question-form');
+        questionForm.remove();
+        questionCount--; // Decrease the count when a question is deleted
+    }
+</script>
+<!--MAKEW IT UNIQHYE CODE FOR ALL THE SLOTS EEEEEEEEEEEe-->
+{% endblock %}
+
