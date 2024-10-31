@@ -9,7 +9,7 @@ Questions
         <h1 class="text-3xl font-bold mb-6 text-center text-[#A0D683]">Questions</h1>
         
         <div class="question-form mb-6" id="question-1">
-            <!-- Form function adds questions-->
+            <!-- Form function adds questions TODOOOO-->
             <form class="bg-[#A0D683] p-6 rounded-lg shadow-md">
                 <h2 class="text-xl font-semibold mb-4">New Question</h2>
                 <div class="mb-4">
@@ -39,24 +39,17 @@ Questions
             </form>
         </div>
 
-        <!-- Existing Questions Make this templating -->
         <div class="existing-questions">
             <h2 class="text-xl font-semibold mb-4">Existing Questions:</h2>
+            {% for question in questions %}
             <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
-                <h3 class="font-medium">Question 1: What is your favorite color?</h3>
-                <p>Answer 1: Blue</p>
-                <p>Answer 2: Red</p>
-                <p>Answer 3: Green</p>
-                <p>Answer 4: Yellow</p>
+                <h3 class="font-medium">{{question.question}}</h3>
+                <p>Option 1: {{question.option_a}}</p>
+                <p>Option 2: {{question.option_b}}</p>
+                <p>Option 3: {{question.option_c}}</p>
+                <p>Option 4: {{question.option_d}}</p>
             </div>
-            <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
-                <h3 class="font-medium">Question 2: What is your favorite animal?</h3>
-                <p>Answer 1: Dog</p>
-                <p>Answer 2: Cat</p>
-                <p>Answer 3: Bird</p>
-                <p>Answer 4: Fish</p>
-            </div>
-            <!-- Add more existing questions here -->
+            {% endfor %}
         </div>
     </div>
 
