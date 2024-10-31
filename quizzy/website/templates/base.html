@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+    <style>
+        .happy-monkey-regular {
+            font-family: "Happy Monkey", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+        body, html {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#72BF78]">
+    <div class="flex flex-row p-4">
+        <div><p class="text-4xl text-[#FEFF9F] font-bold happy-monkey-regular">Quizzy</p></div>
+    </div>
+    <main>
+        {% block body %}
+
+        {% endblock %}
+    </main>
+    
+    <footer class="bg-[#72BF78] text-[#FEFF9F] py-4">
+        <div class="mx-auto text-center text-lg happy-monkey-regular font-bold">
+            <p>Copyright © <span id="year"></span> - All rights reserved</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
