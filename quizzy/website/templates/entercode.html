@@ -6,16 +6,19 @@ Enter The Code!
 {% block body %}
     <div class="flex flex-col h-screen justify-center items-center">
         <div class="h-1/2 w-6/12 bg-[#FEFF9F] rounded-lg">
+            <form method="POST" action="#">
+                {% csrf_token %}
             <div>
                 <p class="text-3xl text-[#72BF78] happy-monkey-regular text-center font-bold p-5">Enter Code!</p>
             </div>
             <div class="flex justify-center mt-4">
                 <input type="text" id="code" name="code" placeholder="Enter The Code"
-                class="w-1/2 rounded-lg happy-monkey-regular text-[#A0D683] text-2xl p-4 font-bold border-2 border-transparent focus:border-[#72BF78] focus:outline-none"/>
+                class="w-1/2 rounded-lg happy-monkey-regular text-[#A0D683] text-2xl p-4 font-bold border-2 border-transparent focus:border-[#72BF78] focus:outline-none" required>
             </div>
             <div class="flex justify-center mt-12">
-                <button class="text-2xl happy-monkey-regular bg-[#72BF78] text-[#FEFF9F] rounded-lg p-5 font-semibold hover:bg-[#8DEB94] transition duration-300 ease-in-out">Submit!</button>
+                <button type="submit" class="text-2xl happy-monkey-regular bg-[#72BF78] text-[#FEFF9F] rounded-lg p-5 font-semibold hover:bg-[#8DEB94] transition duration-300 ease-in-out">Submit!</button>
             </div>
+            </form>
         </div>
     </div>
 {% endblock %}

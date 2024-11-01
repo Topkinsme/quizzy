@@ -3,39 +3,42 @@
 Questions
 {% endblock %}
 {% block body %}
-<div class="bg-[#72BF78] text-gray-800 min-h-screen flex flex-col justify-between">
+<div class="bg-[#72BF78] text-gray-800 min-h-screen flex flex-col justify-between ">
 
-    <div class="container mx-auto p-6 flex-grow" id="questions-container">
-        <h1 class="text-3xl font-bold mb-6 text-center text-[#A0D683]">Questions</h1>
-        
+    <div class="container mx-auto p-6 flex-grow happy-monkey-regular" id="questions-container">
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#FEFF9F]">{{quiz.quiz_title}}</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#FEFF9F]">Questions</h1>
+        <h2 class="text-2xl font-bold mb-6 text-center text-[#FEFF9F]">{{quiz.quiz_id}}</h1>
+        <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-3 text-xl rounded-lg m-3 hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/quizdata/{{quiz.quiz_id}}'">View Statistics</button>
         <div class="question-form mb-6" id="question-1">
-            <!-- Form function adds questions TODOOOO-->
-            <form class="bg-[#A0D683] p-6 rounded-lg shadow-md">
+            <form class="bg-[#A0D683] p-6 rounded-lg shadow-md" action="#" method="POST">
+                {% csrf_token %}
                 <h2 class="text-xl font-semibold mb-4">New Question</h2>
                 <div class="mb-4">
                     <label for="question1" class="block text-lg font-medium">Question:</label>
-                    <input type="text" id="question1" name="question1" class="mt-2 p-2 w-full border border-gray-300 rounded" required>
+                    <input type="text" id="question1" name="question" class="mt-2 p-2 w-full border border-gray-300 rounded" required>
                 </div>
                 
                 <div class="mb-4">
                     <span class="block text-lg font-medium mb-2">Answers:</span>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="answer1" required class="mr-2">
-                        <input type="text" name="answer1_1" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 1" required>
+                        <input type="radio" name="answer" required class="mr-2" value="A">
+                        <input type="text" name="option_a" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 1" required>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="answer1" class="mr-2">
-                        <input type="text" name="answer1_2" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 2">
+                        <input type="radio" name="answer" class="mr-2" value="B">
+                        <input type="text" name="option_b" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 2" required>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="answer1" class="mr-2">
-                        <input type="text" name="answer1_3" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 3">
+                        <input type="radio" name="answer" class="mr-2" value="C">
+                        <input type="text" name="option_c" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 3" required>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="answer1" class="mr-2">
-                        <input type="text" name="answer1_4" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 4">
+                        <input type="radio" name="answer" class="mr-2" value="D">
+                        <input type="text" name="option_d" class="mt-2 p-2 w-full border border-gray-300 rounded" placeholder="Answer 4" required>
                     </div>
                 </div>
+                <button type="submit" class="bg-[#D3EE98] text-gray-800 p-2 rounded hover:bg-[#FEFF9F] transition mx-auto mb-4">Add Question</button>
             </form>
         </div>
 
@@ -43,18 +46,19 @@ Questions
             <h2 class="text-xl font-semibold mb-4">Existing Questions:</h2>
             {% for question in questions %}
             <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
-                <h3 class="font-medium">{{question.question}}</h3>
+                <h1 class="font-large">{{question.question}}</h1>
                 <p>Option 1: {{question.option_a}}</p>
                 <p>Option 2: {{question.option_b}}</p>
                 <p>Option 3: {{question.option_c}}</p>
                 <p>Option 4: {{question.option_d}}</p>
+                <p>Answer: {{question.ans}}</p>
+                <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-1 text-l rounded-lg hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/delete/{{quiz.quiz_id}}/{{question.q_id}}'">Delete</button>
             </div>
             {% endfor %}
         </div>
     </div>
 
-    <button type="button" class="bg-[#D3EE98] text-gray-800 p-2 rounded hover:bg-[#FEFF9F] transition mx-auto mb-4">Add Question</button>
-    <button type="submit" class="bg-[#D3EE98] text-gray-800 p-2 rounded hover:bg-[#FEFF9F] transition mx-auto mb-6">Submit All Questions</button>
+    
 </div>
 
 {% endblock %}

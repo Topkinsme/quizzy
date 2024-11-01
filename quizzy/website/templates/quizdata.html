@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Questions
+{% endblock %}
+{% block body %}
+<div class="bg-[#72BF78] text-gray-800 min-h-screen flex flex-col justify-between ">
+
+    <div class="container mx-auto p-6 flex-grow happy-monkey-regular" id="questions-container">
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#FEFF9F]">{{quiz.quiz_title}}</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#FEFF9F]">Statistics-</h1>
+        <h2 class="text-2xl font-bold mb-6 text-center text-[#FEFF9F]">{{quiz.quiz_id}}</h1>
+        <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-3 text-xl rounded-lg m-3 hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/questions/{{quiz.quiz_id}}'">Edit Quesitons</button>
+        <div class="existing-questions">
+            <h2 class="text-xl font-semibold mb-4">Existing Questions:</h2>
+            {% for question in questions %}
+            <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
+                <h1 class="font-large">{{question.question}}</h1>
+                <p>Option 1: {{question.option_a}}</p>
+                <p>Option 2: {{question.option_b}}</p>
+                <p>Option 3: {{question.option_c}}</p>
+                <p>Option 4: {{question.option_d}}</p>
+                <p>Answer: {{question.ans}}</p>
+                <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-1 text-l rounded-lg hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/delete/{{quiz.quiz_id}}/{{question.q_id}}'">Delete</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+</div>
+
+{% endblock %}
