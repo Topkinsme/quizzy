@@ -11,16 +11,15 @@ Questions
         <h2 class="text-2xl font-bold mb-6 text-center text-[#FEFF9F]">{{quiz.quiz_id}}</h1>
         <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-3 text-xl rounded-lg m-3 hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/questions/{{quiz.quiz_id}}'">Edit Quesitons</button>
         <div class="existing-questions">
-            <h2 class="text-xl font-semibold mb-4">Existing Questions:</h2>
-            {% for question in questions %}
+            <h2 class="text-xl font-semibold mb-4">Participants:</h2>
+            {% for p in participants %}
             <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
-                <h1 class="font-large">{{question.question}}</h1>
-                <p>Option 1: {{question.option_a}}</p>
-                <p>Option 2: {{question.option_b}}</p>
-                <p>Option 3: {{question.option_c}}</p>
-                <p>Option 4: {{question.option_d}}</p>
-                <p>Answer: {{question.ans}}</p>
-                <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-1 text-l rounded-lg hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/delete/{{quiz.quiz_id}}/{{question.q_id}}'">Delete</button>
+                <h1 class="font-large">{{p.data.name}}</h1>
+                <p>Record: <br></p>
+                {% for q in p.track %}
+                <p>{{q}}<br></p>
+                {% endfor %} 
+                <p>Score: {{p.score}}</p>
             </div>
             {% endfor %}
         </div>

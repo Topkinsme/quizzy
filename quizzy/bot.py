@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 from website.models import Quiz, Question, Participant
 
-BOT_TOKEN = os.getenv("BOT_TOKEN") # Replace with your actual token
+BOT_TOKEN = "7708703751:AAHVmHPfRulQ5T0qyDSsW5-uWkk2MaWg7H8" #os.getenv("BOT_TOKEN") # Replace with your actual token
 QUIZ_CODE, USER_NAME, ANSWER = range(3)
 
 chars = [chr(x) for x in range(65, 91)]

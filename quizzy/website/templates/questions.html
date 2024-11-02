@@ -47,10 +47,10 @@ Questions
             {% for question in questions %}
             <div class="bg-[#A0D683] p-4 rounded-lg mb-4">
                 <h1 class="font-large">{{question.question}}</h1>
-                <p>Option 1: {{question.option_a}}</p>
-                <p>Option 2: {{question.option_b}}</p>
-                <p>Option 3: {{question.option_c}}</p>
-                <p>Option 4: {{question.option_d}}</p>
+                <p>Option A: {{question.option_a}}</p>
+                <p>Option B: {{question.option_b}}</p>
+                <p>Option C: {{question.option_c}}</p>
+                <p>Option D: {{question.option_d}}</p>
                 <p>Answer: {{question.ans}}</p>
                 <button class="bg-[#D3EE98] text-[#72BF78] happy-monkey-regular p-1 text-l rounded-lg hover:bg-[#FFFFCC] transition duration-300 ease-in-out" onclick="location.href='/delete/{{quiz.quiz_id}}/{{question.q_id}}'">Delete</button>
             </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Quiz,Question
+from .models import Quiz,Question,Participant
 import random
 
 chars=[chr(x) for x in range (65,91)]
@@ -64,8 +64,19 @@ def delete(request,q_code,code):
     
 def quizdata(request,code):
     quiz=Quiz.objects.filter(quiz_id=code)
+    if len(quiz)<0:
+        redirect("/")
     context={}
     context['quiz']=quiz[0]
     #questions=Question.objects.filter(parent=quiz[0])
     #context['questions']=questions
+    participants=Participant.objects.filter(quiz=quiz[0])
+    new_participants=[]
+    for x in participants:
+        temp_data=x
+        content=[f"Question {i+1}: RIGHT" if t=="1" else f"Question {i+1}: WRONG" for i,t in enumerate(x.answers)]
+        #track=" ".join(content)
+        score=str(x.answers.count('1')*100/len(x.answers))
+        new_participants.append({'data':temp_data,'track':content,'score':score})
+    context['participants']=new_participants
     return render(request,"quizdata.html",context=context)
